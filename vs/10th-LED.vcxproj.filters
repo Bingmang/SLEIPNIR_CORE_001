@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemGroup>
+		<Filter Include="源文件\source">
+			<UniqueIdentifier>{fe141147-e213-48c5-7841-30ff98fbe329}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\ccdcollect">
+			<UniqueIdentifier>{ad42b20b-27ff-4976-4458-626b95165653}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\ccdidentify">
+			<UniqueIdentifier>{0f416fc4-306b-410a-6fbb-d3c29750a9cb}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\common">
+			<UniqueIdentifier>{9cdcd19c-6b8e-4cd9-5579-19426d6b5c5c}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\cpu">
+			<UniqueIdentifier>{ba154400-f0be-446c-6a77-352eef4eaa37}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\drivers">
+			<UniqueIdentifier>{3f29c208-2d4a-4b31-6536-5ce600109b96}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\link">
+			<UniqueIdentifier>{cdbb3b2e-21a3-47f1-602e-c55a900e7a27}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\pid">
+			<UniqueIdentifier>{3992cfec-e001-4bc7-5de3-709cfe8cfa46}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\schedule">
+			<UniqueIdentifier>{1bed5ea3-e76b-4d89-52d4-65c2d81a0ff9}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件\source\systeminit">
+			<UniqueIdentifier>{b1c143be-9905-4a0d-4a79-65c29cfa6813}</UniqueIdentifier>
+		</Filter>
+		<Filter Include="源文件">
+			<UniqueIdentifier>{676f4475-af82-4d0d-734e-f2abc7721233}</UniqueIdentifier>
+		</Filter>
+	</ItemGroup>
+	<ItemGroup>
+		<ClCompile Include="..\source\main.c">
+			<Filter>源文件\source</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\ccdcollect\ccdcollect.c">
+			<Filter>源文件\source\ccdcollect</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\ccdidentify\ccdidentify.c">
+			<Filter>源文件\source\ccdidentify</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\common\print.c">
+			<Filter>源文件\source\common</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\cpu\clkinit.c">
+			<Filter>源文件\source\cpu</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\cpu\core.c">
+			<Filter>源文件\source\cpu</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\cpu\start.c">
+			<Filter>源文件\source\cpu</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\cpu\vectors.c">
+			<Filter>源文件\source\cpu</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\adc.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\gpio.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\interrupt.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\math.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\mcg.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\pulse_counter.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\pwm.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\timer.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\uart.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\drivers\wdog.c">
+			<Filter>源文件\source\drivers</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\pid\pid.c">
+			<Filter>源文件\source\pid</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\schedule\schedule.c">
+			<Filter>源文件\source\schedule</Filter>
+		</ClCompile>
+		<ClCompile Include="..\source\systeminit\systeminit.c">
+			<Filter>源文件\source\systeminit</Filter>
+		</ClCompile>
+	</ItemGroup>
+	<ItemGroup>
+		<ClInclude Include="..\source\ccdcollect\ccdcollect.h">
+			<Filter>源文件\source\ccdcollect</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\ccdidentify\ccdidentify.h">
+			<Filter>源文件\source\ccdidentify</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\common\common.h">
+			<Filter>源文件\source\common</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\common\print.h">
+			<Filter>源文件\source\common</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\cpu\clkinit.h">
+			<Filter>源文件\source\cpu</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\cpu\core.h">
+			<Filter>源文件\source\cpu</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\cpu\start.h">
+			<Filter>源文件\source\cpu</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\cpu\vectors.h">
+			<Filter>源文件\source\cpu</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\adc.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\gpio.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\interrupt.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\math.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\mcg.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\pulse_counter.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\pwm.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\timer.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\uart.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\drivers\wdog.h">
+			<Filter>源文件\source\drivers</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\pid\pid.h">
+			<Filter>源文件\source\pid</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\schedule\schedule.h">
+			<Filter>源文件\source\schedule</Filter>
+		</ClInclude>
+		<ClInclude Include="..\source\systeminit\systeminit.h">
+			<Filter>源文件\source\systeminit</Filter>
+		</ClInclude>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\source\cpu\crt0.s">
+			<Filter>源文件\source\cpu</Filter>
+		</None>
+		<None Include="..\source\link\Pflash.icf">
+			<Filter>源文件\source\link</Filter>
+		</None>
+		<None Include="..\source\link\Ram.icf">
+			<Filter>源文件\source\link</Filter>
+		</None>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="RAM|Win32">
+      <Configuration>RAM</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="FLASH|Win32">
+      <Configuration>FLASH</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\source\main.c">
+    </ClCompile>
+    <ClCompile Include="..\source\ccdcollect\ccdcollect.c">
+    </ClCompile>
+    <ClCompile Include="..\source\ccdidentify\ccdidentify.c">
+    </ClCompile>
+    <ClCompile Include="..\source\common\print.c">
+    </ClCompile>
+    <ClCompile Include="..\source\cpu\clkinit.c">
+    </ClCompile>
+    <ClCompile Include="..\source\cpu\core.c">
+    </ClCompile>
+    <ClCompile Include="..\source\cpu\start.c">
+    </ClCompile>
+    <ClCompile Include="..\source\cpu\vectors.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\adc.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\gpio.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\interrupt.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\math.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\mcg.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\pulse_counter.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\pwm.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\timer.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\uart.c">
+    </ClCompile>
+    <ClCompile Include="..\source\drivers\wdog.c">
+    </ClCompile>
+    <ClCompile Include="..\source\pid\pid.c">
+    </ClCompile>
+    <ClCompile Include="..\source\schedule\schedule.c">
+    </ClCompile>
+    <ClCompile Include="..\source\systeminit\systeminit.c">
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\source\ccdcollect\ccdcollect.h">
+    </ClInclude>
+    <ClInclude Include="..\source\ccdidentify\ccdidentify.h">
+    </ClInclude>
+    <ClInclude Include="..\source\common\common.h">
+    </ClInclude>
+    <ClInclude Include="..\source\common\print.h">
+    </ClInclude>
+    <ClInclude Include="..\source\cpu\clkinit.h">
+    </ClInclude>
+    <ClInclude Include="..\source\cpu\core.h">
+    </ClInclude>
+    <ClInclude Include="..\source\cpu\start.h">
+    </ClInclude>
+    <ClInclude Include="..\source\cpu\vectors.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\adc.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\gpio.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\interrupt.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\math.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\mcg.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\pulse_counter.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\pwm.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\timer.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\uart.h">
+    </ClInclude>
+    <ClInclude Include="..\source\drivers\wdog.h">
+    </ClInclude>
+    <ClInclude Include="..\source\pid\pid.h">
+    </ClInclude>
+    <ClInclude Include="..\source\schedule\schedule.h">
+    </ClInclude>
+    <ClInclude Include="..\source\systeminit\systeminit.h">
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\source\cpu\crt0.s">
+    </None>
+    <None Include="..\source\link\Pflash.icf">
+    </None>
+    <None Include="..\source\link\Ram.icf">
+    </None>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2DA89C1D-CF3D-441B-5351-A74CD41D4789}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>10th-LED</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RAM|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\XATools\IAR Systems\Embedded Workbench 7.0\arm\inc;D:\SmartCar\SLEIPNIR_CORE_001\source\systeminit;D:\SmartCar\SLEIPNIR_CORE_001\source\schedule;D:\SmartCar\SLEIPNIR_CORE_001\source\pid;D:\SmartCar\SLEIPNIR_CORE_001\source\math;D:\SmartCar\SLEIPNIR_CORE_001\source\link;D:\SmartCar\SLEIPNIR_CORE_001\source\keyboard;D:\SmartCar\SLEIPNIR_CORE_001\source\drivers;D:\SmartCar\SLEIPNIR_CORE_001\source\cpu;D:\SmartCar\SLEIPNIR_CORE_001\source\common;D:\SmartCar\SLEIPNIR_CORE_001\source\ccdidentify;D:\SmartCar\SLEIPNIR_CORE_001\source\ccdcollect;$(ReferencePath)</IncludePath>
+    <ReferencePath>
+    </ReferencePath>
+    <LibraryPath>D:\XATools\IAR Systems\Embedded Workbench 7.0\arm\src\lib;D:\XATools\IAR Systems\Embedded Workbench 7.0\arm\lib</LibraryPath>
+    <ExecutablePath>
+    </ExecutablePath>
+    <LibraryWPath>
+    </LibraryWPath>
+    <SourcePath>
+    </SourcePath>
+    <ExcludePath>
+    </ExcludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='FLASH|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\source;..\source\common;..\source\cpu;..\source\drivers;..\source\schedule</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RAM|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='FLASH|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>
+      </PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>
+      </SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props">
+  </Import>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props">
+  </Import>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets">
+  </Import>
+</Project>
