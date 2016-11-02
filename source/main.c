@@ -27,7 +27,7 @@ void main(void)
     DisableInterrupts;  //程序一开始需要关闭所有中断，防止单片机初始化过程中被某个中断打断
     
     system_init();      //系统初始化
-    Delay_ms(60);
+    Delay_ms(50);
 
     EnableInterrupts;   //开中断，定时器中断开始工作
 
