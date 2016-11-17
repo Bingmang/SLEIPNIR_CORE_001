@@ -36,8 +36,8 @@ float g_speed = 0;
 //舵机变量
 int16 g_servo_set = PWM_SVO_MIDDLE;
 unsigned int PWM_turn_value = 0;     //转向舵机PWM值
-uint8 turn_p = 26;
-uint8 turn_d = 0;
+uint8 turn_p = 25;
+uint8 turn_d = 40;
 unsigned int g_turn = PWM_SVO_MIDDLE;
 //上位机调试标记
 int g_ccd_sendflag = 0;
@@ -94,7 +94,7 @@ void pit0_isr(void)
 	//当游戏开始且过了加速时间，才会开始检测终点 终止时间开始计时（在Car_Run里）(CCDIdentify.c中  当g_gameBegin=1时才会开始检测终点（即两秒后）。
 	if (g_gameBegin == 1 && g_runFaster == 0)
 	{
-		if (g_endleftbreak_num > 5 && g_endrightbreak_num > 5)
+		if (g_endleftbreak_num > 2 && g_endrightbreak_num > 2 && g_endmiddlebreak_num>3 )
 		{
 			g_gameEnd = 1;
 		}
@@ -105,12 +105,12 @@ void pit0_isr(void)
 	g_rightbreak_num = 0;
 	g_endleftbreak_num = 0;
 	g_endrightbreak_num = 0;
-
+	g_endmiddlebreak_num = 0;
 
 	if (g_gameBegin == 0)				//2000ms后 正常工作 启动部分判定（终点停止判定） 码盘反馈值为0时，重置为未开始状态。
 	{
 		g_gameBeginTime++;
-		if (g_gameBeginTime > 400)
+		if (g_gameBeginTime > 400)		//400
 			g_gameBegin = 1;
 	}
 
@@ -119,8 +119,8 @@ void pit0_isr(void)
 	{
 		g_runFaster = 1;
 		g_runFasterTime = 0; 
-		g_gameBegin = 0;
-		g_gameBeginTime = 0;
+		//g_gameBegin = 0;
+		//g_gameBeginTime = 0;
 	}
 
 	time++;
@@ -144,11 +144,12 @@ void Car_Run(void)
 	//中速
 	if (JM_1 != 0)
 	{
-		if (ABS(g_angerror_temp) < 3)
+		if (ABS(g_angerror_temp) < 5)
 			g_speed_slowdown = 1;
-		else
-			g_speed_slowdown = 1.5;
-		g_speed = 230 - ABS(g_angerror_temp) * ABS(g_angerror_temp) * g_speed_slowdown;
+		else if (ABS(g_angerror_temp) > 12)
+			g_speed_slowdown = 0.4;
+		else g_speed_slowdown = 0.85;
+		g_speed = 260 - ABS(g_angerror_temp) * ABS(g_angerror_temp) * g_speed_slowdown;
 		if (g_speed < 190)
 			g_speed = 190;
 	}
@@ -169,7 +170,7 @@ void Car_Run(void)
 
 	//慢速
 	if (JM_1 != 0 && JM_2 != 0)
-		g_speed = 150;
+		g_speed = 170;
 
 	////四号开关启动PID算法
 	//if (JM_4 != 0)
@@ -199,7 +200,10 @@ void Car_Run(void)
 
 	}
 
-
+	if (g_gameBegin == 0)
+	{
+		g_speed = 0;
+	}
 	//遇到终点停止
 	if (g_gameEnd == 1)
 	{
@@ -210,12 +214,6 @@ void Car_Run(void)
 		}
 
 	}
-
-	//两秒后开跑
-	//if (g_gameBegin == 0)
-	//{
-	//	g_speed = 0;
-	//}
 
 	PWM_motor_value = 500 - (int)g_speed;
 	SET_PWM_MOT(PWM_motor_value);
@@ -236,19 +234,15 @@ void Car_Turn(void)
 
 	//启用拐弯增大拐角,直道减小拐角
 
-	if (ABS(g_angerror_temp) > 3)
-		turn_p = 30;
-	else 
-		turn_p = 10;
-
 	if (JM_3 != 0)
 	{
-		if (ABS(g_angerror_temp) > 3)
-			turn_p = 35;
+		if (ABS(g_angerror_temp) > 4)
+			turn_p = 30;
 		else
 			turn_p = 5;
 	}
-	g_turn = (int)(PWM_SVO_MIDDLE - (g_angerror_temp * turn_p));// -((g_angerror_temp - last_g_angerror_temp) *turn_d);
+	turn_d = turn_p;
+	g_turn = (int)(PWM_SVO_MIDDLE - (g_angerror_temp * turn_p)) -((g_angerror_temp - last_g_angerror_temp) *turn_d);
 
 	if (g_turn <= PWM_SVO_MIN)
     {

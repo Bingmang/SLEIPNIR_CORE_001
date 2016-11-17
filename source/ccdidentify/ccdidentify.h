@@ -13,6 +13,7 @@ extern uint8 g_leftbreak_num;
 extern uint8 g_rightbreak_num;
 extern uint8 g_endleftbreak_num;
 extern uint8 g_endrightbreak_num;
+extern uint8 g_endmiddlebreak_num;
 extern int g_test;
 
 /*****************************************************************/

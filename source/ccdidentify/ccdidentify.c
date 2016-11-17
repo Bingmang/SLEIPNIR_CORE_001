@@ -22,6 +22,7 @@ uint8 g_leftbreak_num = 0;
 uint8 g_rightbreak_num = 0;
 uint8 g_endleftbreak_num = 0;
 uint8 g_endrightbreak_num = 0;
+uint8 g_endmiddlebreak_num = 0;
 uint8 ccdleftsum = 0;
 uint8 ccdrightsum = 0;
 uint8 leftn = 0;
@@ -44,86 +45,58 @@ uint8 CCD_Identify(CCD_data *ccd)
     }
 
 	//第一种判别图像的方法（变化率方法找跳变沿）
-	if (JM_4 == 0)
+
+	for (k = 63; k > shield_point; k--) //63
 	{
-		for (k = 63; k > shield_point; k--) //63
+		if ((ccd->graph[k] - ccd->graph[k - 3]) >= threshold)
 		{
-			if ((ccd->graph[k] - ccd->graph[k - 3]) >= threshold)
-			{
-				g_leftbreak_num = 0;
-				break;
-			}
-			else g_leftbreak_num++;
+			g_leftbreak_num = 0;
+			break;
 		}
-
-		left_toggle_point = k - 1;
-
-		for (k = 64; k < GRAPH_WIDTH - 1 - shield_point; k++)
-		{
-			if ((ccd->graph[k] - ccd->graph[k + 3]) >= threshold)
-			{
-				g_rightbreak_num = 0;
-				break;
-			}
-			else g_rightbreak_num++;
-		}
-
-		right_toggle_point = k + 1;
-
-		//如果有一边检测不到跳变沿，则用另一边的跳变沿估算中点
-		if (g_leftbreak_num > 50)
-			middle_temp = right_toggle_point / 2;
-		else if (g_rightbreak_num > 50)
-			middle_temp = left_toggle_point / 2;
-		else
-			middle_temp = (left_toggle_point + right_toggle_point) / 2;
-
+		else g_leftbreak_num++;
 	}
 
-	//第二种判别图像的方法（取平均）
-	else if (JM_4 != 0)
-	{
-		for (k = shield_point; k < GRAPH_WIDTH - shield_point; k++)
-		{
-			if ((ccd->graph[k] > 100))
-			{
-				ccdleftsum += k;
-				leftn++;
-			}
-		}
-		left_toggle_point = ccdleftsum / leftn;
-/*
-		for (k = 64; k < GRAPH_WIDTH - 1 - shield_point; k++)
-		{
-			if ((ccd->graph[k] > threshold))
-			{
-				ccdrightsum += k;
-				rightn++;
-			}
-			else
-			{
-				break;
-			}
-		}
+	left_toggle_point = k - 1;
 
-		right_toggle_point = ccdrightsum / rightn;
-*/
-		g_test = ccdleftsum;
-		middle_temp = left_toggle_point;
+	for (k = 64; k < GRAPH_WIDTH - 1 - shield_point; k++)
+	{
+		if ((ccd->graph[k] - ccd->graph[k + 3]) >= threshold)
+		{
+			g_rightbreak_num = 0;
+			break;
+		}
+		else g_rightbreak_num++;
 	}
+
+	right_toggle_point = k + 1;
+
+	//如果有一边检测不到跳变沿，则用另一边的跳变沿估算中点
+	if (g_leftbreak_num > 50)
+		middle_temp = right_toggle_point / 2;
+	else if (g_rightbreak_num > 50)
+		middle_temp = left_toggle_point / 2;
+	else
+		middle_temp = (left_toggle_point + right_toggle_point) / 2;
+
+
 
 
 	//如果游戏开始，判定终点停车
 	if (g_gameBegin == 1)
 	{
-		for (k = 40; k < 54; k++)
+		for (k = 39; k < 55; k++)
 		{
-			if (ccd->graph[k] < 10)
+			if (ccd->graph[k] < 100)
 				g_endleftbreak_num++;
 		}
-		for (k = 63; k < 85; k++)
+		for (k = 55; k < 70; k++)
 		{
-			if (ccd->graph[k] < 10)
+			if (ccd->graph[k] > 100)
+				g_endmiddlebreak_num++;
+		}
+		for (k = 70; k < 89; k++)
+		{
+			if (ccd->graph[k] < 100)
 				g_endrightbreak_num++;
 		}
 	}

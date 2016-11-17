@@ -20,7 +20,7 @@ Stop=1
 Freq=10000000
 MultiCoreRunAll=1
 [DebugChecksum]
-Checksum=392741318
+Checksum=1328419845
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -54,12 +54,6 @@ ITMportsLogFile=0
 ITMlogFile=$PROJ_DIR$\ITM.log
 [watch_formats]
 Fmt0={W}42:time	3	0
-[Trace1]
-Enabled=0
-ShowSource=1
-[Trace2]
-Enabled=0
-ShowSource=0
 [SWOTraceWindow]
 PcSampling=0
 InterruptLogs=0
@@ -98,10 +92,6 @@ GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
 SumSortOrder=0
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Count=0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -109,10 +99,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Aliases]
-A0=_ "C:\Users\Vickers\Desktop\光电10th校内赛测试\10th-LED\source\main.c" "C:\Users\Vickers\Desktop\光电10th校内赛例程\10th-LED\source\main.c"
-Count=1
-SuppressDialog=1
 [CallStackLog]
 Enabled=0
 [PowerProbe]
@@ -125,3 +111,11 @@ Mode=1
 Graph=0
 Symbiont=0
 Exclusions=
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Count=0
+[Aliases]
+A0=_ "C:\Users\Vickers\Desktop\光电10th校内赛测试\10th-LED\source\main.c" "C:\Users\Vickers\Desktop\光电10th校内赛例程\10th-LED\source\main.c"
+Count=1
+SuppressDialog=1
