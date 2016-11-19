@@ -36,8 +36,8 @@ float g_speed = 0;
 //舵机变量
 int16 g_servo_set = PWM_SVO_MIDDLE;
 unsigned int PWM_turn_value = 0;     //转向舵机PWM值
-uint8 turn_p = 25;
-uint8 turn_d = 40;
+uint8 turn_p = 11;
+uint8 turn_d = 17;
 unsigned int g_turn = PWM_SVO_MIDDLE;
 //上位机调试标记
 int g_ccd_sendflag = 0;
@@ -141,7 +141,7 @@ void Car_Run(void)
 	if (g_speed < 150)
 		g_speed = 150;
 
-	//中速
+	//1速
 	if (JM_1 != 0)
 	{
 		if (ABS(g_angerror_temp) < 5)
@@ -149,28 +149,43 @@ void Car_Run(void)
 		else if (ABS(g_angerror_temp) > 12)
 			g_speed_slowdown = 0.4;
 		else g_speed_slowdown = 0.85;
-		g_speed = 260 - ABS(g_angerror_temp) * ABS(g_angerror_temp) * g_speed_slowdown;
+		g_speed = 220 - ABS(g_angerror_temp) * ABS(g_angerror_temp) * g_speed_slowdown;
 		if (g_speed < 190)
 			g_speed = 190;
 	}
 
-	//快速
+
+	//2速
 	if (JM_2 != 0)
 	{
-		if (ABS(g_angerror_temp) < 3)
+		if (ABS(g_angerror_temp) < 5)
 			g_speed_slowdown = 1;
-		else if (ABS(g_angerror_temp) > 13)
-			g_speed_slowdown = 1.8;
-		else
-			g_speed_slowdown = 1.5;
+		else if (ABS(g_angerror_temp) > 12)
+			g_speed_slowdown = 0.4;
+		else g_speed_slowdown = 0.85;
+		g_speed = 240 - ABS(g_angerror_temp) * ABS(g_angerror_temp) * g_speed_slowdown;
+		if (g_speed < 190)
+			g_speed = 190;
+	}
+
+
+	//3速
+	if (JM_3 != 0)
+	{
+		if (ABS(g_angerror_temp) < 5)
+			g_speed_slowdown = 1;
+		else if (ABS(g_angerror_temp) > 12)
+			g_speed_slowdown = 0.4;
+		else g_speed_slowdown = 0.85;
 		g_speed = 260 - ABS(g_angerror_temp) * ABS(g_angerror_temp) * g_speed_slowdown;
 		if (g_speed < 210)
 			g_speed = 210;
 	}
 
+
 	//慢速
-	if (JM_1 != 0 && JM_2 != 0)
-		g_speed = 170;
+	if (JM_1 != 0 && JM_2 != 0 && JM_3 != 0)
+		g_speed = 180;
 
 	////四号开关启动PID算法
 	//if (JM_4 != 0)
@@ -234,12 +249,12 @@ void Car_Turn(void)
 
 	//启用拐弯增大拐角,直道减小拐角
 
-	if (JM_3 != 0)
+	if (JM_4 != 0)
 	{
 		if (ABS(g_angerror_temp) > 4)
-			turn_p = 30;
+			turn_p = 13;
 		else
-			turn_p = 5;
+			turn_p = 2;
 	}
 	turn_d = turn_p;
 	g_turn = (int)(PWM_SVO_MIDDLE - (g_angerror_temp * turn_p)) -((g_angerror_temp - last_g_angerror_temp) *turn_d);
@@ -266,8 +281,8 @@ void Car_Turn(void)
 	}
 
 
-	if (g_gameEnd == 1)
-		return;
+//	if (g_gameEnd == 1)
+//		return;
     SET_PWM_SVO(PWM_turn_value);
 
 }
